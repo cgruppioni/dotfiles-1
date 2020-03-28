@@ -23,6 +23,9 @@ augroup END
 " I never use netrw, so disable its history.
 let g:netrw_dirhistmax = 0
 
+autocmd BufNew,BufEnter *.ts,*.tsx,*.js,*.jsx execute "silent! CocEnable"
+autocmd BufLeave *.ts,*.tsx,*.js,*.jsx execute "silent! CocDisable"
+
 " Highlight the current line, only for the buffer with focus
 augroup CursorLine
   autocmd!
@@ -88,6 +91,10 @@ set completeopt=menu,menuone,longest,preview
 " ============================================================================
 " MAPPINGS {{{
 " ===========================================================================
+
+" Go to next completion starting at the top of the list, not the bottom
+inoremap <Tab> <C-n>
+
 " Change the current working directory to the directory that the current file you are editing is in.
 nnoremap <Leader>cd :cd %:p:h <CR>
 
@@ -326,10 +333,6 @@ set grepformat=%f:%l:%c:%m
 " ============================================================================
 " PLUGIN OPTIONS {{{
 " ===========================================================================
-
-" Supertab
-" Tell Supertab to start completions at the top of the list, not the bottom.
-let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " gundo
 " -----
@@ -653,6 +656,11 @@ Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'leafgarland/typescript-vim'
 
+" CoC Completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+
 " Ruby/Rails
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
@@ -677,8 +685,6 @@ Plug 'tpope/vim-git'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 " Easily comment/uncomment lines in many languages
 Plug 'tomtom/tcomment_vim'
-" <Tab> indents or triggers autocomplete, smartly
-Plug 'ervandew/supertab'
 " Git bindings
 Plug 'tpope/vim-fugitive'
 " The Hub to vim-fugitive's git
