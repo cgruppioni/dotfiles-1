@@ -354,6 +354,7 @@ augroup Ale
   autocmd!
   " ALE linting events
   set updatetime=1000
+  let g:ale_completion_enabled = 1
   let g:ale_lint_on_text_changed = 'never'
   let g:ale_linters = {}
 
