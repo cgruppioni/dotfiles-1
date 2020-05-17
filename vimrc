@@ -338,6 +338,10 @@ set grepformat=%f:%l:%c:%m
 " Tell Supertab to start completions at the top of the list, not the bottom.
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
+" Racer
+" Show function definition and types
+let g:racer_experimental_completer = 1
+
 " gundo
 " -----
 " Without this, Gundo won't run because Python 2 isn't installed.
@@ -673,8 +677,11 @@ Plug 'janko-m/vim-test'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'christoomey/vim-tmux-navigator'
 
-" Syntax
+" Rust
+Plug 'racer-rust/vim-racer', {'for': 'rust'}
 Plug 'rust-lang/rust.vim'
+
+" Syntax
 Plug 'vim-scripts/applescript.vim'
 Plug 'shmup/vim-sql-syntax'
 Plug 'tpope/vim-git'

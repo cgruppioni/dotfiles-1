@@ -83,6 +83,9 @@ stay_awake_while rustup-init -y > /dev/null
 # Make sure `cargo` is in $PATH
 source $HOME/.cargo/env
 rustup component add clippy
+# For racer: https://github.com/racer-rust/racer#installation
+stay_awake_while rustup toolchain add nightly
+stay_awake_while cargo +nightly install racer
 
 info "Installing lister..."
 if command_does_not_exist lister; then

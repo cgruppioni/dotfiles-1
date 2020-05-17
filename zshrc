@@ -431,6 +431,8 @@ PATH=./bin/stubs:$PATH
 
 # Rust
 [[ -r "$HOME"/.cargo/env ]] && source "$HOME"/.cargo/env
+# For vim-racer plugin
+export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 
 # }}}
 
